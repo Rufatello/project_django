@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 
 class Client(models.Model):
     email = models.EmailField(verbose_name='Почта', max_length=250)
@@ -26,3 +26,18 @@ class Message(models.Model):
     class Meta:
         verbose_name = 'Пиьсмо'
         verbose_name_plural = 'Письма'
+
+
+
+
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    avatar = models.ImageField(upload_to='user_image/', verbose_name='Аватар')
+
+    def __unicode__(self):
+        return self.user
+
+    class Meta:
+        verbose_name = 'Профиль'
+        verbose_name_plural = 'Профили'

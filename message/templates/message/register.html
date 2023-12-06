@@ -1,0 +1,9 @@
+{% extends 'message/base.html' %}
+{%block main%}
+<form method='post' enctype="multipart/form-data">
+    {% csrf_token %}
+    <div> class="form-error">{{ form.non_field_errors}}</div>
+    {{ form.as_p }}
+    <button>изменить</button>
+</form>
+{% endblock %}
